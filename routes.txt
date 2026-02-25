@@ -1,0 +1,135 @@
+/*
+package main
+
+import (
+	"github.com/gin-gonic/gin"
+)
+
+func main() {
+
+	r := gin.Default()
+
+	api := r.Group("/api/v1")
+
+	// Public Routes
+	registerAuthRoutes(api)
+	registerMovieRoutes(api)
+
+	// Protected Routes
+	protected := api.Group("/")
+	protected.Use(AuthMiddleware())
+
+	registerUserRoutes(protected)
+	registerBookingRoutes(protected)
+	registerPaymentRoutes(protected)
+
+	// Admin Routes
+	admin := protected.Group("/admin")
+	admin.Use(RoleMiddleware("ADMIN"))
+
+	registerAdminRoutes(admin)
+	registerRevenueRoutes(admin)
+	registerExportRoutes(admin)
+
+	// Staff Routes
+	staff := protected.Group("/staff")
+	staff.Use(RoleMiddleware("STAFF"))
+
+	registerStaffRoutes(staff)
+
+	r.Run(":8080")
+}
+
+func registerAuthRoutes(rg *gin.RouterGroup) {
+	auth := rg.Group("/auth")
+	{
+		auth.POST("/login", LoginHandler)
+		auth.POST("/logout", LogoutHandler)
+		auth.POST("/signup", SignupHandler)
+		auth.GET("/verify-email", VerifyEmailHandler)
+		auth.POST("/resend-email", ResendEmailHandler)
+
+		auth.POST("/send-otp", SendOTPHandler)
+		auth.POST("/verify-otp", VerifyOTPHandler)
+
+		auth.POST("/reset-password/request", ResetPasswordRequestHandler)
+		auth.POST("/reset-password/confirm", ResetPasswordConfirmHandler)
+	}
+}
+
+func registerUserRoutes(rg *gin.RouterGroup) {
+	users := rg.Group("/users")
+	{
+		users.GET("/me", GetProfileHandler)
+		users.PUT("/me", UpdateProfileHandler)
+		users.POST("/me/profile-image", UploadProfileImageHandler)
+		users.PUT("/me/avatar", SelectAvatarHandler)
+
+		users.GET("/me/bookings", GetUserBookingsHandler)
+	}
+}
+
+func registerMovieRoutes(rg *gin.RouterGroup) {
+	movies := rg.Group("/movies")
+	{
+		movies.GET("", GetMoviesHandler)
+		movies.GET("/:id", GetMovieDetailsHandler)
+	}
+
+	shows := rg.Group("/shows")
+	{
+		shows.GET("", GetShowsHandler)
+		shows.GET("/:showId/seats", GetSeatMapHandler)
+	}
+}
+
+func registerBookingRoutes(rg *gin.RouterGroup) {
+	bookings := rg.Group("/bookings")
+	{
+		bookings.POST("", CreateBookingHandler)
+		bookings.GET("/:id", GetBookingHandler)
+		bookings.GET("/:id/qr", GetBookingQRHandler)
+	}
+}
+
+func registerPaymentRoutes(rg *gin.RouterGroup) {
+	payments := rg.Group("/payments")
+	{
+		payments.POST("/initiate", InitiatePaymentHandler)
+		payments.POST("/callback", PaymentCallbackHandler)
+	}
+}
+
+func registerAdminRoutes(admin *gin.RouterGroup) {
+
+	admin.GET("/profile", GetAdminProfileHandler)
+	admin.PUT("/change-password", ChangeAdminPasswordHandler)
+
+	admin.POST("/theatres", CreateTheatreHandler)
+	admin.POST("/screens", CreateScreenHandler)
+
+	admin.POST("/schedules", CreateScheduleHandler)
+}
+
+func registerRevenueRoutes(admin *gin.RouterGroup) {
+
+	revenue := admin.Group("/revenue")
+	{
+		revenue.GET("/movies", RevenueByMovieHandler)
+		revenue.GET("/timeframe", RevenueByTimeframeHandler)
+		revenue.GET("/showtimes", RevenueByShowtimeHandler)
+		revenue.GET("/genres", RevenueByGenreHandler)
+	}
+}
+
+func registerExportRoutes(admin *gin.RouterGroup) {
+
+	admin.GET("/bookings/export", ExportBookingsCSVHandler)
+}
+
+func registerStaffRoutes(staff *gin.RouterGroup) {
+
+	staff.POST("/checkin", CheckinHandler)
+}
+
+*/
